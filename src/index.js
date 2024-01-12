@@ -17,7 +17,7 @@ function runCalculator() {
     let nr1
     let nr2
     let operator
-    let word
+    let outcome
     let result
 
     const nr1Prompt = window.prompt("Enter the first number.", "0")
@@ -42,19 +42,19 @@ function runCalculator() {
     operator = operatorPrompt;
 
     if (operator === "+") {
-        word = "sum"
+        outcome = "sum"
         result = nr1 + nr2
     } else if (operator === "-") {
-        word = "difference"
+        outcome = "difference"
         result = nr1 - nr2
     } else if (operator === "*") {
-        word = "product"
+        outcome = "product"
         result = nr1 * nr2
     } else if (operator === "/") {
-        word = "quotient"
+        outcome = "quotient"
         result = nr1 / nr2
     }
 
-    window.alert(`The ${word} of ${nr1} ${operator} ${nr2} is ${result}`)
+    window.alert(`The ${outcome} of ${nr1} ${operator} ${nr2} is ${result}`)
 }
 
