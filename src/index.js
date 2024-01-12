@@ -22,5 +22,5 @@ function checkOperand(operandPrompt) {
 
 function getOperand() {
     const operandPrompt = window.prompt("Enter the operand.")
-    checkOperand(operandPrompt) ? operand = operandPrompt : window.alert("Enter one of these operands: + - * /")
+    checkOperand(operandPrompt) ? operand = operandPrompt : window.alert("Try again and enter one of these operands: + - * /")
 }
