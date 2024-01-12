@@ -1,26 +1,60 @@
-let nr1
-let nr2
-let operand
-
-function getFirstNr() {
-    const nr1Prompt = Number(window.prompt("Enter the first number.", "0"))
-    nr1 = nr1Prompt
+function checkOperands(prompt) {
+    if (typeof prompt != "number") {
+        return;
+    }
+    return prompt
 }
 
-function getSecondNr() {
-    const nr2Prompt = Number(window.prompt("Enter the second number.", "0"))
-    nr2 = nr2Prompt
-}
-
-function checkOperand(operandPrompt) {
-    if(operandPrompt === "+" || "-" || "*" || "/") {
+function checkOperator(operatorPrompt) {
+    if (operatorPrompt.length === 1 && ["+", "-", "*", "/"].includes(operatorPrompt)) {
         return true
     } else {
         return false
     }
 }
 
-function getOperand() {
-    const operandPrompt = window.prompt("Enter the operand.")
-    checkOperand(operandPrompt) ? operand = operandPrompt : window.alert("Try again and enter one of these operands: + - * /")
+function runCalculator() {
+    let nr1
+    let nr2
+    let operator
+    let word
+    let result
+
+    const nr1Prompt = window.prompt("Enter the first number.", "0")
+    if(!checkOperands(parseFloat(nr1Prompt))) {
+        window.alert("The operands must be numbers, try again")
+        return;
+    }
+    nr1 = nr1Prompt
+
+    const nr2Prompt = window.prompt("Enter the second number.", "0")
+    if(!checkOperands(parseFloat(nr2Prompt))) {
+        window.alert("The operands must be numbers, try again")
+        return;
+    }
+    nr2 = nr2Prompt    
+
+    const operatorPrompt = window.prompt("Enter the operator.")
+    if (!checkOperator(operatorPrompt)) {
+        window.alert("Try again and enter only one of these operators: + - * /");
+        return;
+    }
+    operator = operatorPrompt;
+
+    if (operator === "+") {
+        word = "sum"
+        result = nr1 + nr2
+    } else if (operator === "-") {
+        word = "difference"
+        result = nr1 - nr2
+    } else if (operator === "*") {
+        word = "product"
+        result = nr1 * nr2
+    } else if (operator === "/") {
+        word = "quotient"
+        result = nr1 / nr2
+    }
+
+    window.alert(`The ${word} of ${nr1} ${operator} ${nr2} is ${result}`)
 }
+
